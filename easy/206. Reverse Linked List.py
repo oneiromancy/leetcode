@@ -3,19 +3,24 @@
 #     def __init__(self, val=0, next=None):
 #         self.val = val
 #         self.next = next
+import copy
+
 class Solution:
     def reverseList(self, head: ListNode) -> ListNode:
-        nodes = []
-        vals = []
-        currentNode = head
+        prev_node = None
+        curr_node = head
+        
+        while curr_node:
+            cp_curr_node = copy.deepcopy(curr_node)
+            cp_curr_node.next = prev_node
+            prev_node = cp_curr_node
+            
+            curr_node = curr_node.next
+            
+        return prev_node
 
-        while currentNode:
-            nodes.append(currentNode)
-            vals.append(currentNode.val)
-            currentNode = currentNode.next
-
-        for idx in range(len(nodes)):
-            nodes[idx].val = vals[-idx - 1]
+# N1 => N2 => N3 => ... => Ni
+# N1 <= N2 <= N3 <= ... <= Ni
 
 
 # Given the head of a singly linked list, reverse the list, and return the reversed list.
