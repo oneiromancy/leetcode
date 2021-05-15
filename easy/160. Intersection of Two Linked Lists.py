@@ -24,7 +24,5 @@ def getIntersectionNode(self, headA: ListNode, headB: ListNode) -> ListNode:
                 for el in A_nodes[B_val]:
                     if el == current_node_B:
                         return el
-            else:
-                return A_nodes[B_val]
 
         current_node_B = current_node_B.next
